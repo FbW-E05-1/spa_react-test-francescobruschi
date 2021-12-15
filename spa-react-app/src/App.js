@@ -1,31 +1,48 @@
 import React,{useState} from 'react';
-import Info from "./Info";
 import './App.css';
 
 
 function App() {
-  const [offsetTop, setOffsetTop] = useState(300);
+  const[books,setBooks] = useState(null);
+  const apiURL = 'https://www.anapioficeandfire.com/api/books?pageSize=30';
 
-  function moveBoxUp() {
-    setOffsetTop(offsetTop - 50);
-  }
+function fetchBooks(){
+  fetch(apiURL)
+  .then(resp => resp.json())
+  .then(data =>{
+setBooks(data)
+  })
+}
 
   return (
     <div className="App">
-      <h1>Move the Box!</h1>
+      <h1>Game of Thrones Books</h1>
+      <h2>Fetch a list from an API and display it</h2>
 
-      {/* handle the click event on this button */}
-      <button onClick={moveBoxUp}>👆 Move Up 👆</button>
+  
+      <div>
+        <button className="fetch-button" onClick={fetchBooks}>Fetch Data</button>
+        <br />
+      </div>
 
-      {/* move this box using inline styles */}
-      <div
-        className="box"
-        style={{
-          transform: `translateY(${offsetTop}px)`
-        }}
-      />
+      
+      <div className="books">
+      {books && books.map((book,index)=>(
 
-      <Info />
+        <div className="book" key={index}>
+          <h3>Book {index + 1}</h3>
+          <h2>{book.name}</h2>
+
+          <div className="details">
+            <p>👨: Author/Authors</p>
+            <p>📖: {book.numberOfPages}</p>
+            <p>🏘️: {book.country}</p>
+            <p>⏰: Release date</p>
+          </div>
+        </div>
+      ))}
+      </div>
+
     </div>
   );
 }
