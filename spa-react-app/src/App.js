@@ -4,33 +4,28 @@ import './App.css';
 
 
 function App() {
- const [name,setName] = useState ('Frankie');
- const [age,setAge] = useState (36);
+  const [offsetTop, setOffsetTop] = useState(300);
+
+  function moveBoxUp() {
+    setOffsetTop(offsetTop - 50);
+  }
 
   return (
     <div className="App">
-      <div>
-        <h2 className="subtitle is-4">Update Data from an input</h2>
-      </div>
+      <h1>Move the Box!</h1>
 
-      <div className="input-display">
-        <p>Display Name: {name} </p>
-        <p>Display Age: {age} </p>
-      </div>
+      {/* handle the click event on this button */}
+      <button onClick={moveBoxUp}>👆 Move Up 👆</button>
 
-      <div className="inputs">
-        <div className="field">
-          <label className="label">Name: </label>
-          <input className="input" type="text" placeholder="William" value={name} onChange={event => setName(event.target.value)} />
-        </div>
+      {/* move this box using inline styles */}
+      <div
+        className="box"
+        style={{
+          transform: `translateY(${offsetTop}px)`
+        }}
+      />
 
-        
-        <div className="field">
-          <label className="label">Age: </label>
-          <input className="input" type="number" placeholder="38" value={age} onChange={event => setAge(+event.target.value)}/>
-        </div>
-      </div>
-      <Info seriesNumber="3" />
+      <Info />
     </div>
   );
 }

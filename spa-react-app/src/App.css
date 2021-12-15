@@ -1,19 +1,33 @@
-
-.App {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .App {
     font-family: sans-serif;
     text-align: center;
+    padding-top: 100px;
+    min-height: 100vh;
+    background: #32df1b;
+    color: rgb(225, 250, 228);
   }
   
-  .input-display,
-  .inputs {
-    text-align: left;
-    margin: 20px;
+  .box {
+    width: 150px;
+    height: 150px;
+    background: #dc3954;
+    margin: 0 auto;
+    transform: translateY(300px);
+    transition: 0.3s cubic-bezier(0.56, 0.2, 0.46, 1.27) all;
   }
   
-  .input {
-    padding: 10px;
-  }
-  
-  .subtitle {
-    margin-top: 80px;
+  button {
+    margin-top: 40px;
+    padding: 20px 40px;
+    background: #04d7bb;
+    color: rgb(224, 237, 243);
+    font-size: 40px;
+    border-radius: 10px;
+    border: none;
   }
