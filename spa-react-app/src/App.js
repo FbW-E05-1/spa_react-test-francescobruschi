@@ -1,31 +1,38 @@
-
+import React,{useState} from 'react';
+import Info from "./Info";
 import './App.css';
 
+
 function App() {
-  const user = {
-    name: 'Chris on Code',
-    location: 'Las Vegas',
-    foodType: 'Everything',
-    age: 28,
-    likes: 'Coding into the wee hours of the morning',
-    twitterUsername: 'chrisoncode',
-    avatar:
-      'https://scotch-res.cloudinary.com/image/upload/v1556479698/xRZsnhr0_400x400_cpyg2t.png'
-  };
+ const [name,setName] = useState ('Frankie');
+ const [age,setAge] = useState (36);
+
   return (
-  <div className="App">
-           <div className="user-detail">
-          {user.name}
-          <img src={user.avatar} alt="" />
-          <h3>{user.name}</h3>
-          <p>Location <br></br>{user.location}</p>
-          <p>Eats <br></br>{user.foodType}</p>
-          <p>Age <br></br> {user.age}</p>
-          <p>Likes <br></br>{user.likes}</p>
-          <p>Twitter <br></br><a href={`https://twitter.com/@${user.twitterUsername}`}>@{user.twitterUsername}</a></p>
+    <div className="App">
+      <div>
+        <h2 className="subtitle is-4">Update Data from an input</h2>
+      </div>
+
+      <div className="input-display">
+        <p>Display Name: {name} </p>
+        <p>Display Age: {age} </p>
+      </div>
+
+      <div className="inputs">
+        <div className="field">
+          <label className="label">Name: </label>
+          <input className="input" type="text" placeholder="William" value={name} onChange={event => setName(event.target.value)} />
+        </div>
+
+        
+        <div className="field">
+          <label className="label">Age: </label>
+          <input className="input" type="number" placeholder="38" value={age} onChange={event => setAge(+event.target.value)}/>
         </div>
       </div>
-    );
-  }
+      <Info seriesNumber="3" />
+    </div>
+  );
+}
 
 export default App;
